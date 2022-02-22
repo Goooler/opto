@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 class PreferenceImpl<C, S>(
     val parse: (S) -> C,
     val save: (C) -> S,
-    val onSet: () -> Unit,
+    val onSet: (C) -> Unit,
     override val defaultValue: C,
     val key: Preferences.Key<S>,
     val preferencesDataStore: DataStore<Preferences>,
@@ -24,14 +24,15 @@ class PreferenceImpl<C, S>(
         preferencesDataStore.edit { mutablePreferences ->
             mutablePreferences[key] = save(value)
         }
-        onSet()
+        onSet(value)
     }
 
     override suspend fun update(block: (C) -> C) {
         preferencesDataStore.edit { mutablePreferences ->
             val current = mutablePreferences[key].parsedOrDefault()
-            mutablePreferences[key] = save(block(current))
+            val new = block(current)
+            mutablePreferences[key] = save(new)
+            onSet(new)
         }
-        onSet()
     }
 }
