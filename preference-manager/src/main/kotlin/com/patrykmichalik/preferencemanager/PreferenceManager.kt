@@ -10,7 +10,7 @@ interface PreferenceManager {
     fun <S> preference(
         key: Preferences.Key<S>,
         defaultValue: S,
-        onSet: () -> Unit = {},
+        onSet: (S) -> Unit = {},
     ): Preference<S, S> = PreferenceImpl(
         preferencesDataStore = preferencesDataStore,
         key = key,
@@ -23,7 +23,7 @@ interface PreferenceManager {
     fun <C, S> preference(
         key: Preferences.Key<S>,
         defaultValue: C,
-        onSet: () -> Unit = {},
+        onSet: (C) -> Unit = {},
         parse: (S) -> C,
         save: (C) -> S,
     ): Preference<C, S> = PreferenceImpl(
