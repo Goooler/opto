@@ -10,7 +10,7 @@ class PreferenceImpl<C, S>(
     val save: (C) -> S,
     val onSet: (C) -> Unit,
     override val defaultValue: C,
-    val key: Preferences.Key<S>,
+    override val key: Preferences.Key<S>,
     val preferencesDataStore: DataStore<Preferences>,
 ): Preference<C, S> {
 
