@@ -36,6 +36,8 @@ suspend fun <C, S> Preference<C, S>.first() = get().first()
 
 fun <C, S> Preference<C, S>.firstBlocking() = runBlocking { first() }
 
+fun <C, S> Preference<C, S>.setBlocking(value: C) = runBlocking { set(value = value) }
+
 @Composable
 fun <C, S> Preference<C, S>.state(initial: C? = null) = get().collectAsState(initial = initial)
 
