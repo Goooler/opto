@@ -38,6 +38,18 @@ fun <C, S> Preference<C, S>.firstBlocking() = runBlocking { first() }
 
 fun <C, S> Preference<C, S>.setBlocking(value: C) = runBlocking { set(value = value) }
 
+fun Preference<Boolean, Boolean>.toggleBlocking() = runBlocking { toggle() }
+
+fun Preference<Int, Int>.incrementBlocking(by: Int = 1) = runBlocking { increment(by = by) }
+
+fun Preference<Int, Int>.decrementBlocking(by: Int = 1) = runBlocking { decrement(by = by) }
+
+fun Preference<Float, Float>.incrementBlocking(by: Float = 1f) = runBlocking { increment(by = by) }
+
+fun Preference<Float, Float>.decrementBlocking(by: Float = 1f) = runBlocking { decrement(by = by) }
+
+fun Preference<String, String>.clearBlocking() = runBlocking { clear() }
+
 @Composable
 fun <C, S> Preference<C, S>.state(initial: C? = null) = get().collectAsState(initial = initial)
 
