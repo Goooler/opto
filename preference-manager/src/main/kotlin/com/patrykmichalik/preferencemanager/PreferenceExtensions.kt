@@ -34,6 +34,10 @@ suspend fun Preference<String, String>.clear() {
 
 suspend fun <C, S> Preference<C, S>.first() = get().first()
 
+suspend fun <C, S> Preference<C, S>.reset() {
+    set(value = defaultValue)
+}
+
 fun Preference<Boolean, Boolean>.toggleBlocking() {
     runBlocking { toggle() }
 }
@@ -59,6 +63,8 @@ fun Preference<String, String>.clearBlocking() {
 }
 
 fun <C, S> Preference<C, S>.firstBlocking() = runBlocking { first() }
+
+fun <C, S> Preference<C, S>.resetBlocking() = runBlocking { reset() }
 
 fun <C, S> Preference<C, S>.setBlocking(value: C) {
     runBlocking { set(value = value) }
