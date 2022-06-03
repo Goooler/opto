@@ -29,6 +29,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.2.0-beta03"
+    }
 }
 
 afterEvaluate {
@@ -38,14 +46,13 @@ afterEvaluate {
                 from components.release
                 groupId = preferenceManagerGroupId
                 version = preferenceManagerVersion
-                artifactId = "core"
+                artifactId = "compose"
             }
         }
     }
 }
 
 dependencies {
-    implementation "androidx.datastore:datastore-preferences:1.0.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    implementation "androidx.compose.runtime:runtime:1.2.0-beta03"
     implementation project(":domain")
 }

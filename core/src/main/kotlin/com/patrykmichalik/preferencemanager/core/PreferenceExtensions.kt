@@ -1,7 +1,5 @@
 package com.patrykmichalik.preferencemanager.core
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import com.patrykmichalik.preferencemanager.domain.Preference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.first
@@ -70,9 +68,6 @@ fun <C, S> Preference<C, S, *>.resetBlocking() = runBlocking { reset() }
 fun <C, S> Preference<C, S, *>.setBlocking(value: C) {
     runBlocking { set(value = value) }
 }
-
-@Composable
-fun <C, S> Preference<C, S, *>.state(initial: C? = null) = get().collectAsState(initial = initial)
 
 fun <C, S> Preference<C, S, *>.onEach(
     launchIn: CoroutineScope,

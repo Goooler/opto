@@ -15,5 +15,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Preference Manager"
-include ":domain"
+include ":compose"
 include ":core"
+include ":domain"
+
