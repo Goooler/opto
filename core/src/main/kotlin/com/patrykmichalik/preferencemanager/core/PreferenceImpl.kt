@@ -1,8 +1,9 @@
-package com.patrykmichalik.preferencemanager
+package com.patrykmichalik.preferencemanager.core
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import com.patrykmichalik.preferencemanager.domain.Preference
 import kotlinx.coroutines.flow.map
 
 class PreferenceImpl<C, S>(
@@ -12,7 +13,7 @@ class PreferenceImpl<C, S>(
     override val defaultValue: C,
     override val key: Preferences.Key<S>,
     val preferencesDataStore: DataStore<Preferences>,
-): Preference<C, S> {
+): Preference<C, S, Preferences.Key<S>> {
 
     private fun S?.parsedOrDefault() = this?.let { parse(it) } ?: defaultValue
 

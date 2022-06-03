@@ -1,0 +1,30 @@
+plugins {
+    id "java-library"
+    id "org.jetbrains.kotlin.jvm"
+    id "maven-publish"
+}
+
+group preferenceManagerGroupId
+version preferenceManagerVersion
+
+java {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            PreferenceManagerDomain(MavenPublication) {
+                from components.java
+                groupId = preferenceManagerGroupId
+                version = preferenceManagerVersion
+                artifactId = "domain"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+}

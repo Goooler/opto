@@ -4,8 +4,8 @@ plugins {
     id "maven-publish"
 }
 
-group "com.patrykmichalik.preference-manager"
-version "1.0.8"
+group preferenceManagerGroupId
+version preferenceManagerVersion
 
 android {
     compileSdk 32
@@ -13,13 +13,11 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 32
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt")
         }
     }
 
@@ -39,17 +37,16 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion "1.2.0-beta02"
     }
-
 }
 
 afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication) {
+            PreferenceManagerCore(MavenPublication) {
                 from components.release
-                groupId = "com.patrykmichalik.preference-manager"
-                artifactId = "preference-manager"
-                version = "1.0.8"
+                groupId = preferenceManagerGroupId
+                version = preferenceManagerVersion
+                artifactId = "core"
             }
         }
     }
@@ -59,4 +56,5 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
     implementation "androidx.compose.runtime:runtime:1.2.0-beta03"
+    implementation project(":domain")
 }

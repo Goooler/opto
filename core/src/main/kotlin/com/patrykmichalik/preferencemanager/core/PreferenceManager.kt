@@ -1,7 +1,8 @@
-package com.patrykmichalik.preferencemanager
+package com.patrykmichalik.preferencemanager.core
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import com.patrykmichalik.preferencemanager.domain.Preference
 
 interface PreferenceManager {
 
@@ -11,7 +12,7 @@ interface PreferenceManager {
         key: Preferences.Key<S>,
         defaultValue: S,
         onSet: (S) -> Unit = {},
-    ): Preference<S, S> = PreferenceImpl(
+    ): Preference<S, S, Preferences.Key<S>> = PreferenceImpl(
         preferencesDataStore = preferencesDataStore,
         key = key,
         defaultValue = defaultValue,
@@ -26,7 +27,7 @@ interface PreferenceManager {
         onSet: (C) -> Unit = {},
         parse: (S) -> C,
         save: (C) -> S,
-    ): Preference<C, S> = PreferenceImpl(
+    ): Preference<C, S, Preferences.Key<S>> = PreferenceImpl(
         preferencesDataStore = preferencesDataStore,
         key = key,
         defaultValue = defaultValue,
