@@ -7,8 +7,8 @@ import com.patrykmichalik.preferencemanager.domain.Preference
 import kotlinx.coroutines.flow.map
 
 class PreferenceImpl<C, S>(
-    val parse: (S) -> C,
-    val save: (C) -> S,
+    override val parse: (S) -> C,
+    override val save: (C) -> S,
     val onSet: (C) -> Unit,
     override val defaultValue: C,
     override val key: Preferences.Key<S>,
