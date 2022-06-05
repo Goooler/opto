@@ -4,8 +4,8 @@ plugins {
     id "maven-publish"
 }
 
-group preferenceManagerGroupId
-version preferenceManagerVersion
+group optoGroupId
+version optoVersion
 
 android {
     compileSdk 32
@@ -42,10 +42,10 @@ android {
 afterEvaluate {
     publishing {
         publications {
-            PreferenceManagerCore(MavenPublication) {
+            OptoCompose(MavenPublication) {
                 from components.release
-                groupId = preferenceManagerGroupId
-                version = preferenceManagerVersion
+                groupId = optoGroupId
+                version = optoVersion
                 artifactId = "compose"
             }
         }

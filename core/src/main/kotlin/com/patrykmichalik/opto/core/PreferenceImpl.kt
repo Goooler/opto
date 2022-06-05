@@ -1,9 +1,9 @@
-package com.patrykmichalik.preferencemanager.core
+package com.patrykmichalik.opto.core
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import com.patrykmichalik.preferencemanager.domain.Preference
+import com.patrykmichalik.opto.domain.Preference
 import kotlinx.coroutines.flow.map
 
 class PreferenceImpl<C, S>(

@@ -4,8 +4,8 @@ plugins {
     id "maven-publish"
 }
 
-group preferenceManagerGroupId
-version preferenceManagerVersion
+group optoGroupId
+version optoVersion
 
 java {
     sourceCompatibility JavaVersion.VERSION_1_8
@@ -15,10 +15,10 @@ java {
 afterEvaluate {
     publishing {
         publications {
-            PreferenceManagerDomain(MavenPublication) {
+            OptoDomain(MavenPublication) {
                 from components.java
-                groupId = preferenceManagerGroupId
-                version = preferenceManagerVersion
+                groupId = optoGroupId
+                version = optoVersion
                 artifactId = "domain"
             }
         }

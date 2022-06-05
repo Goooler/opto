@@ -10,6 +10,6 @@ task clean(type: Delete) {
 }
 
 ext {
-    preferenceManagerGroupId = "com.patrykmichalik.preference-manager"
-    preferenceManagerVersion = "1.0.11"
+    optoGroupId = "com.patrykmichalik.opto"
+    optoVersion = "1.0.12"
 }

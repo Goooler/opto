@@ -14,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Preference Manager"
+rootProject.name = "Opto"
 include ":compose"
 include ":core"
 include ":domain"

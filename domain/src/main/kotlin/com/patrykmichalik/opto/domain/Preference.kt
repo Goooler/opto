@@ -1,4 +1,4 @@
-package com.patrykmichalik.preferencemanager.domain
+package com.patrykmichalik.opto.domain
 
 import kotlinx.coroutines.flow.Flow
 
