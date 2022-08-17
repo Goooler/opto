@@ -8,11 +8,11 @@ group optoGroupId
 version optoVersion
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdk 21
-        targetSdk 32
+        targetSdk 33
     }
 
     buildTypes {
@@ -46,6 +46,6 @@ afterEvaluate {
 
 dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
     implementation project(":domain")
 }
