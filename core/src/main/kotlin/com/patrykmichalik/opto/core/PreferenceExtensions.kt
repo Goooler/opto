@@ -78,6 +78,3 @@ fun <C, S> Preference<C, S, *>.onEach(
         .onEach { block(it) }
         .launchIn(scope = launchIn)
 }
-
-fun <C, S> Preference<C, S, Preferences.Key<S>>.getFromPreferences(preferences: Preferences): C =
-    preferences.get(key = key)?.let { parse(it) } ?: defaultValue

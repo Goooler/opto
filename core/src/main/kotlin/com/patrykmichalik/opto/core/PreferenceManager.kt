@@ -2,7 +2,6 @@ package com.patrykmichalik.opto.core
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.patrykmichalik.opto.domain.Preference
 
 interface PreferenceManager {
 
@@ -12,7 +11,7 @@ interface PreferenceManager {
         key: Preferences.Key<S>,
         defaultValue: S,
         onSet: (S) -> Unit = {},
-    ): Preference<S, S, Preferences.Key<S>> = PreferenceImpl(
+    ): PreferenceImpl<S, S> = PreferenceImpl(
         preferencesDataStore = preferencesDataStore,
         key = key,
         defaultValue = defaultValue,
@@ -27,7 +26,7 @@ interface PreferenceManager {
         onSet: (C) -> Unit = {},
         parse: (S) -> C,
         save: (C) -> S,
-    ): Preference<C, S, Preferences.Key<S>> = PreferenceImpl(
+    ): PreferenceImpl<C, S> = PreferenceImpl(
         preferencesDataStore = preferencesDataStore,
         key = key,
         defaultValue = defaultValue,
