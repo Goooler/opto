@@ -34,7 +34,7 @@ void customizeMavenPom(MavenPom mavenPom) {
     mavenPom.scm {
 
         connection = "scm:git:git://github.com/patrykmichalik/opto.git"
-        developerConnection = "scm:git:git://github.com/patrykmichalik/opto.git"
+        developerConnection = "scm:git:ssh://github.com/patrykmichalik/opto.git"
         url = "https://github.com/patrykmichalik/opto"
     }
 
