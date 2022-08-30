@@ -10,7 +10,7 @@ plugins {
 ext {
 
     optoGroupId = "com.patrykmichalik.opto"
-    optoVersion = "1.0.14"
+    optoVersion = "1.0.15"
     customizeMavenPom = this.&customizeMavenPom
     configureRepository = this.&configureRepository
     configureSigning = this.&configureSigning
