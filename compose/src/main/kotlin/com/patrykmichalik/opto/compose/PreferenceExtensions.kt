@@ -5,4 +5,4 @@ import androidx.compose.runtime.collectAsState
 import com.patrykmichalik.opto.domain.Preference
 
 @Composable
-fun <C, S> Preference<C, S, *>.state(initial: C? = null) = get().collectAsState(initial = initial)
+fun <C> Preference<C, *, *>.state(initial: C? = null) = get().collectAsState(initial = initial)
