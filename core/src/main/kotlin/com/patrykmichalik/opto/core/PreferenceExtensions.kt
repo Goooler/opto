@@ -1,6 +1,5 @@
 package com.patrykmichalik.opto.core
 
-import androidx.datastore.preferences.core.Preferences
 import com.patrykmichalik.opto.domain.Preference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.first
