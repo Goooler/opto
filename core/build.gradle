@@ -1,4 +1,5 @@
 plugins {
+
     id "com.android.library"
     id "org.jetbrains.kotlin.android"
     id "maven-publish"
@@ -8,43 +9,58 @@ group optoGroupId
 version optoVersion
 
 android {
+
     compileSdk 33
 
     defaultConfig {
+
         minSdk 21
         targetSdk 33
     }
 
     buildTypes {
+
         release {
+
             minifyEnabled false
         }
     }
 
     compileOptions {
+
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
+
         jvmTarget = "1.8"
     }
 }
 
 afterEvaluate {
+
     publishing {
+
         publications {
+
             OptoCore(MavenPublication) {
+
                 from components.release
                 groupId = optoGroupId
                 version = optoVersion
                 artifactId = "core"
+                customizeMavenPom(pom)
+                configureRepository(repositories)
             }
         }
     }
+
+    configureSigning(signing, publishing.publications.OptoCore)
 }
 
 dependencies {
+
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
     implementation project(":domain")

@@ -1,0 +1,13 @@
+name: Release update
+on:
+    workflow_dispatch:
+jobs:
+    release_update:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                  chmod +x gradlew
+                  ./gradlew domain:assembleRelease
+                  ./gradlew core:assembleRelease
+                  ./gradlew compose:assembleRelease
+                  ./gradlew publish

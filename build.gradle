@@ -1,15 +1,77 @@
 plugins {
+
     id "com.android.application" version "7.2.2" apply false
     id "com.android.library" version "7.2.2" apply false
     id "org.jetbrains.kotlin.android" version "1.7.10" apply false
     id "org.jetbrains.kotlin.jvm" version "1.7.10" apply false
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    id "signing"
 }
 
 ext {
+
     optoGroupId = "com.patrykmichalik.opto"
-    optoVersion = "1.0.13"
+    optoVersion = "1.0.14"
+    customizeMavenPom = this.&customizeMavenPom
+    configureRepository = this.&configureRepository
+    configureSigning = this.&configureSigning
+}
+
+void customizeMavenPom(MavenPom mavenPom) {
+
+    mavenPom.name = "Opto"
+    mavenPom.url = "https://github.com/patrykmichalik/opto"
+
+    mavenPom.licenses {
+
+        license {
+
+            name = "MIT License"
+            url = "https://github.com/patrykmichalik/opto/blob/master/LICENSE"
+        }
+    }
+
+    mavenPom.scm {
+
+        connection = "scm:git:git://github.com/patrykmichalik/opto.git"
+        developerConnection = "scm:git:git://github.com/patrykmichalik/opto.git"
+        url = "https://github.com/patrykmichalik/opto"
+    }
+
+    mavenPom.developers {
+
+        developer {
+
+            id = "patrykmichalik"
+            name = "Patryk Michalik"
+            email = "contact@patrykmichalik.com"
+        }
+    }
+}
+
+void configureRepository(RepositoryHandler repositoryHandler) {
+
+    repositoryHandler.maven {
+
+        url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
+
+        credentials {
+
+            username = findProperty("mavenUsername")
+            password = findProperty("mavenPassword")
+        }
+    }
+}
+
+void configureSigning(SigningExtension signingExtension, MavenPublication mavenPublication) {
+
+    signing.setRequired {
+
+        gradle.taskGraph.allTasks.any { task -> task.is(PublishToMavenRepository) }
+    }
+
+    def signingKey = findProperty("signingKey")
+    def signingPassword = findProperty("signingPassword")
+
+    signingExtension.useInMemoryPgpKeys(signingKey, signingPassword)
+    signingExtension.sign mavenPublication
 }
