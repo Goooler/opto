@@ -12,7 +12,4 @@ jobs:
                     distribution: zulu
             -   run: |
                     chmod +x gradlew
-                    ./gradlew domain:assembleRelease
-                    ./gradlew core:assembleRelease
-                    ./gradlew compose:assembleRelease
                     ./gradlew publish
