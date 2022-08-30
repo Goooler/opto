@@ -19,6 +19,7 @@ ext {
 void customizeMavenPom(MavenPom mavenPom) {
 
     mavenPom.name = "Opto"
+    mavenPom.description = "A lightweight Preferences DataStore wrapper."
     mavenPom.url = "https://github.com/patrykmichalik/opto"
 
     mavenPom.licenses {

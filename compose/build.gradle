@@ -46,6 +46,15 @@ android {
 
         kotlinCompilerExtensionVersion "1.3.0"
     }
+
+    publishing {
+
+        singleVariant("release") {
+
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 afterEvaluate {
