@@ -81,5 +81,5 @@ afterEvaluate {
 dependencies {
 
     implementation "androidx.compose.runtime:runtime:1.2.1"
-    implementation project(":domain")
+    api project(":domain")
 }
