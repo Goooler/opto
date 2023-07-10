@@ -11,6 +11,7 @@ version optoVersion
 android {
 
     compileSdk 33
+    namespace "com.patrykmichalik.opto.compose"
 
     defaultConfig {
 
