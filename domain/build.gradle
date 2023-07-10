@@ -1,5 +1,4 @@
 plugins {
-
     id "java-library"
     id "org.jetbrains.kotlin.jvm"
     id "maven-publish"
@@ -9,7 +8,6 @@ group optoGroupId
 version optoVersion
 
 java {
-
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
     withSourcesJar()
@@ -17,13 +15,9 @@ java {
 }
 
 afterEvaluate {
-
     publishing {
-
         publications {
-
             OptoDomain(MavenPublication) {
-
                 from components.java
                 groupId = optoGroupId
                 version = optoVersion
@@ -33,11 +27,9 @@ afterEvaluate {
             }
         }
     }
-
     configureSigning(signing, publishing.publications.OptoDomain)
 }
 
 dependencies {
-
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2"
 }

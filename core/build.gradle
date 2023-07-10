@@ -1,51 +1,13 @@
 plugins {
-
     id "com.android.library"
     id "org.jetbrains.kotlin.android"
     id "maven-publish"
 }
 
-group optoGroupId
-version optoVersion
+
 
 android {
-
-    compileSdk 33
     namespace "com.patrykmichalik.opto.core"
-
-    defaultConfig {
-
-        minSdk 21
-        targetSdk 33
-    }
-
-    buildTypes {
-
-        release {
-
-            minifyEnabled false
-        }
-    }
-
-    compileOptions {
-
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-
-        jvmTarget = "1.8"
-    }
-
-    publishing {
-
-        singleVariant("release") {
-
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
 }
 
 afterEvaluate {
@@ -73,5 +35,5 @@ dependencies {
 
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2"
-    api project(":domain")
+    api projects.domain
 }

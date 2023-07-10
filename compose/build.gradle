@@ -1,5 +1,4 @@
 plugins {
-
     id "com.android.library"
     id "org.jetbrains.kotlin.android"
     id "maven-publish"
@@ -9,63 +8,21 @@ group optoGroupId
 version optoVersion
 
 android {
-
-    compileSdk 33
     namespace "com.patrykmichalik.opto.compose"
 
-    defaultConfig {
-
-        minSdk 21
-        targetSdk 33
-    }
-
-    buildTypes {
-
-        release {
-
-            minifyEnabled false
-        }
-    }
-
-    compileOptions {
-
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-
-        jvmTarget = "1.8"
-    }
-
     buildFeatures {
-
         compose true
     }
 
     composeOptions {
-
         kotlinCompilerExtensionVersion "1.4.8"
-    }
-
-    publishing {
-
-        singleVariant("release") {
-
-            withSourcesJar()
-            withJavadocJar()
-        }
     }
 }
 
 afterEvaluate {
-
     publishing {
-
         publications {
-
             OptoCompose(MavenPublication) {
-
                 from components.release
                 groupId = optoGroupId
                 version = optoVersion
@@ -80,7 +37,6 @@ afterEvaluate {
 }
 
 dependencies {
-
     implementation "androidx.compose.runtime:runtime:1.4.3"
-    api project(":domain")
+    api projects.domain
 }
