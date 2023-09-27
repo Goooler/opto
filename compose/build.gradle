@@ -37,6 +37,6 @@ afterEvaluate {
 }
 
 dependencies {
-    implementation "androidx.compose.runtime:runtime:1.5.1"
+    implementation "androidx.compose.runtime:runtime:1.5.2"
     api projects.domain
 }
