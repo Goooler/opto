@@ -1,42 +1,21 @@
 plugins {
-    id "com.android.library"
-    id "org.jetbrains.kotlin.android"
-    id "maven-publish"
+  id "com.android.library"
+  id "org.jetbrains.kotlin.android"
 }
-
-group optoGroupId
-version optoVersion
 
 android {
-    namespace "com.patrykmichalik.opto.compose"
+  namespace "io.github.goooler.opto.compose"
 
-    buildFeatures {
-        compose true
-    }
+  buildFeatures {
+    compose true
+  }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion "1.5.8"
-    }
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            OptoCompose(MavenPublication) {
-                from components.release
-                groupId = optoGroupId
-                version = optoVersion
-                artifactId = "compose"
-                customizeMavenPom(pom)
-                configureRepository(repositories)
-            }
-        }
-    }
-
-    configureSigning(signing, publishing.publications.OptoCompose)
+  composeOptions {
+    kotlinCompilerExtensionVersion "1.5.8"
+  }
 }
 
 dependencies {
-    implementation "androidx.compose.runtime:runtime:1.5.4"
-    api projects.domain
+  api projects.domain
+  implementation "androidx.compose.runtime:runtime:1.5.4"
 }

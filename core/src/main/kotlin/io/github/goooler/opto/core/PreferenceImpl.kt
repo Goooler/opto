@@ -1,9 +1,9 @@
-package com.patrykmichalik.opto.core
+package io.github.goooler.opto.core
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import com.patrykmichalik.opto.domain.Preference
+import io.github.goooler.opto.domain.Preference
 import kotlinx.coroutines.flow.map
 
 class PreferenceImpl<C, S>(
