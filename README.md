@@ -1,6 +1,6 @@
 # Opto
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.patrykmichalik.opto/core)](https://central.sonatype.com/artifact/com.patrykmichalik.opto/core)
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.goooler.opto/core?&server=https://s01.oss.sonatype.org/)](https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/goooler/opto/)
 
 Opto is a lightweight Preferences DataStore wrapper. Read more about it [here](https://patrykmichalik.com/projects/opto). This repo is a fork of [patrykandpatrick/opto](https://github.com/patrykandpatrick/opto).
 
