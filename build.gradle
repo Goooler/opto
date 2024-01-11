@@ -5,6 +5,7 @@ plugins {
   id "com.android.library" version "8.2.1" apply false
   id "org.jetbrains.kotlin.android" version "1.9.22" apply false
   id "org.jetbrains.kotlin.jvm" version "1.9.22" apply false
+  id 'com.vanniktech.maven.publish' version '0.27.0' apply false
   id "com.diffplug.spotless" version "6.23.3"
 }
 
@@ -17,6 +18,15 @@ allprojects {
         minSdk 21
         targetSdk 34
       }
+    }
+  }
+
+  plugins.withId('com.android.library') {
+    plugins.apply('com.vanniktech.maven.publish')
+
+    mavenPublishing {
+      publishToMavenCentral('S01')
+      signAllPublications()
     }
   }
 
