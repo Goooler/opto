@@ -1,6 +1,6 @@
-package com.patrykmichalik.opto.core
+package io.github.goooler.opto.core
 
-import com.patrykmichalik.opto.domain.Preference
+import io.github.goooler.opto.domain.Preference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn

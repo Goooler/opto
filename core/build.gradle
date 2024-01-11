@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-  namespace "com.patrykmichalik.opto.core"
+  namespace "io.github.goooler.opto.core"
 }
 
 dependencies {

@@ -1,4 +1,4 @@
-package com.patrykmichalik.opto.domain
+package io.github.goooler.opto.domain
 
 import kotlinx.coroutines.flow.Flow
 

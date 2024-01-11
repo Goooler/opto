@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-  namespace "com.patrykmichalik.opto.compose"
+  namespace "io.github.goooler.opto.compose"
 
   buildFeatures {
     compose true

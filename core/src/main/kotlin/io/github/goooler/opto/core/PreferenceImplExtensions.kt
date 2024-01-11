@@ -1,4 +1,4 @@
-package com.patrykmichalik.opto.core
+package io.github.goooler.opto.core
 
 import androidx.datastore.preferences.core.Preferences
 
