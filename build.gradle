@@ -21,7 +21,7 @@ allprojects {
     }
   }
 
-  plugins.withId('com.android.library') {
+  if (project != rootProject) {
     plugins.apply('com.vanniktech.maven.publish')
 
     mavenPublishing {
