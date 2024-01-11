@@ -1,14 +1,14 @@
 plugins {
-    id "com.android.library"
-    id "org.jetbrains.kotlin.android"
+  id "com.android.library"
+  id "org.jetbrains.kotlin.android"
 }
 
 android {
-    namespace "com.patrykmichalik.opto.core"
+  namespace "com.patrykmichalik.opto.core"
 }
 
 dependencies {
-    api projects.domain
-    implementation "androidx.datastore:datastore-preferences:1.0.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+  api projects.domain
+  implementation "androidx.datastore:datastore-preferences:1.0.0"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 }
