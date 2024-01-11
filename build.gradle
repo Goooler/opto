@@ -1,28 +1,14 @@
-import com.android.build.gradle.BasePlugin
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.android.build.gradle.api.AndroidBasePlugin
 
 plugins {
     id "com.android.application" version "8.2.1" apply false
     id "com.android.library" version "8.2.1" apply false
     id "org.jetbrains.kotlin.android" version "1.9.22" apply false
     id "org.jetbrains.kotlin.jvm" version "1.9.22" apply false
-    id "signing"
-}
-
-ext {
-    optoGroupId = "com.patrykmichalik.opto"
-    optoVersion = "1.0.15"
-    customizeMavenPom = this.&customizeMavenPom
-    configureRepository = this.&configureRepository
-    configureSigning = this.&configureSigning
 }
 
 allprojects {
-    group optoGroupId
-    version optoVersion
-
-    plugins.withType(BasePlugin).configureEach {
+    plugins.withType(AndroidBasePlugin).configureEach {
         android {
             compileSdk 34
 
@@ -30,73 +16,12 @@ allprojects {
                 minSdk 21
                 targetSdk 34
             }
-
-            compileOptions {
-                sourceCompatibility JavaVersion.VERSION_1_8
-                targetCompatibility JavaVersion.VERSION_1_8
-            }
-
-            publishing {
-                singleVariant("release") {
-                    withSourcesJar()
-                    withJavadocJar()
-                }
-            }
         }
     }
 
-    tasks.withType(KotlinCompile).configureEach {
-        compilerOptions.jvmTarget = JvmTarget.JVM_1_8
-    }
-
-}
-
-void customizeMavenPom(MavenPom mavenPom) {
-    mavenPom.name = "Opto"
-    mavenPom.description = "A lightweight Preferences DataStore wrapper."
-    mavenPom.url = "https://github.com/patrykmichalik/opto"
-
-    mavenPom.licenses {
-        license {
-            name = "MIT License"
-            url = "https://github.com/patrykmichalik/opto/blob/master/LICENSE"
+    plugins.withType(JavaBasePlugin).configureEach {
+        java {
+            toolchain.languageVersion = JavaLanguageVersion.of(8)
         }
     }
-
-    mavenPom.scm {
-        connection = "scm:git:git://github.com/patrykmichalik/opto.git"
-        developerConnection = "scm:git:ssh://github.com/patrykmichalik/opto.git"
-        url = "https://github.com/patrykmichalik/opto"
-    }
-
-    mavenPom.developers {
-        developer {
-            id = "patrykmichalik"
-            name = "Patryk Michalik"
-            email = "contact@patrykmichalik.com"
-        }
-    }
-}
-
-void configureRepository(RepositoryHandler repositoryHandler) {
-    repositoryHandler.maven {
-        url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
-
-        credentials {
-            username = findProperty("mavenUsername")
-            password = findProperty("mavenPassword")
-        }
-    }
-}
-
-void configureSigning(SigningExtension signingExtension, MavenPublication mavenPublication) {
-    signing.setRequired {
-        gradle.taskGraph.allTasks.any { task -> task.is(PublishToMavenRepository) }
-    }
-
-    def signingKey = findProperty("signingKey")
-    def signingPassword = findProperty("signingPassword")
-
-    signingExtension.useInMemoryPgpKeys(signingKey, signingPassword)
-    signingExtension.sign mavenPublication
 }

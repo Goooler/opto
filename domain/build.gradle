@@ -1,33 +1,5 @@
 plugins {
-    id "java-library"
     id "org.jetbrains.kotlin.jvm"
-    id "maven-publish"
-}
-
-group optoGroupId
-version optoVersion
-
-java {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-    withSourcesJar()
-    withJavadocJar()
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            OptoDomain(MavenPublication) {
-                from components.java
-                groupId = optoGroupId
-                version = optoVersion
-                artifactId = "domain"
-                customizeMavenPom(pom)
-                configureRepository(repositories)
-            }
-        }
-    }
-    configureSigning(signing, publishing.publications.OptoDomain)
 }
 
 dependencies {
