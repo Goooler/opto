@@ -18,5 +18,5 @@ android {
 
 dependencies {
   api projects.domain
-  implementation "androidx.compose.runtime:runtime:1.6.6"
+  implementation "androidx.compose.runtime:runtime:1.6.7"
 }
