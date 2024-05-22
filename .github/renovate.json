@@ -7,7 +7,7 @@
   ],
   "packageRules": [
     {
-      "groupName": "Kotlin and Compose Compiler",
+      "groupName": "Kotlin",
       "matchPackagePrefixes": [
         "com.google.devtools.ksp",
         "androidx.compose.compiler"
