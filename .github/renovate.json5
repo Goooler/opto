@@ -1,25 +1,25 @@
 {
   "labels": [
-    "dependencies"
+    "dependencies",
   ],
   "extends": [
-    "config:base"
+    "config:base",
   ],
   "packageRules": [
     {
       "groupName": "Kotlin",
       "matchPackagePrefixes": [
         "com.google.devtools.ksp",
-        "androidx.compose.compiler"
+        "androidx.compose.compiler",
       ],
       "matchPackagePatterns": [
-        "org.jetbrains.kotlin.*"
+        "org.jetbrains.kotlin.*",
       ]
     },
     {
       "groupName": "AGP",
       "matchPackagePatterns": [
-        "com.android.*"
+        "com.android.*",
       ]
     }
   ]
